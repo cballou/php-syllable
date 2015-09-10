@@ -23,6 +23,27 @@ Language sources: http://tug.org/tex-hyphen/#languages
 
 Supports PHP 5.2 and up, so you can use it on older servers.
 
+## Example Usage
+
+```php
+// must set the proper paths for a cache dir and the TeX language file dir
+Syllable::setCacheDir(realpath('cache'));
+Syllable::setLanguageDir(realpath('languages'));
+
+$syllable = new Syllable();
+$syllable->setHyphen('-');
+$syllable->setLanguage('en-us');
+
+// Su-per-cal-ifrag-ilis-tic-ex-pi-ali-do-cious
+$syllable->hyphenateText('Supercalifragilisticexpialidocious')
+
+// array(';Re', 'dun', 'dan', 't, punc', 'tu', 'a', 'tion...')
+$syllable->splitWord(';Redundant, punctuation...');
+
+// array(';Re', 'dun', 'dant, punc', 'tu', 'a', 'tion...')
+$syllable->splitText(';Redundant, punctuation...');
+```
+
 Changes
 -------
 1.4.1
